@@ -8,6 +8,10 @@ local async = event == "BufWritePost"
 null_ls.setup({
 	on_attach = my_attach.on_attach,
 	sources = {
-		null_ls.builtins.formatting.prettierd
+		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.phpcbf.with({
+			prefer_local = "vendor/bin",
+		})
+
 	},
 })

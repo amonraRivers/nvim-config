@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
-	--use 'github/copilot.vim'
+	use 'github/copilot.vim'
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -37,4 +37,12 @@ return require('packer').startup(function(use)
 	use 'leafgarland/typescript-vim'
 	use 'peitalin/vim-jsx-typescript'
 	use 'ThePrimeagen/vim-be-good'
+	use { 'saecki/crates.nvim',
+		tag = 'v0.3.0',
+		requires = { 'nvim-lua/plenary.nvim' },
+		config = function()
+			require('crates').setup()
+		end,
+	}
+	use "fladson/vim-kitty"
 end)
