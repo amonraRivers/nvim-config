@@ -4,6 +4,11 @@ vim.keymap.set('n', '<leader>p.', function()
         find_command = { 'rg', '--files', '--glob', '!.git', '--glob', '.env*', '--hidden' },
     });
 end, {})
+vim.keymap.set('n', '<leader>pA', function()
+    builtin.find_files({
+        find_command = { 'rg', '--files', '--glob', '!.git', '--no-ignore', '--hidden' },
+    });
+end, {})
 vim.keymap.set('n', '<leader>pf', function()
     builtin.find_files({
         find_command = { 'rg', '--files', '--glob', '!.git', '--hidden' },
