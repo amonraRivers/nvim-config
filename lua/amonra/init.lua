@@ -1,4 +1,5 @@
 require("amonra.remap")
 require("amonra.utils")
 require("amonra.settings")
+require("amonra.lazy")
 print("hello from amonra")

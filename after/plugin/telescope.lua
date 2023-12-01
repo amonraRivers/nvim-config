@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>pA', function()
 end, {})
 vim.keymap.set('n', '<leader>pf', function()
     builtin.find_files({
-        find_command = { 'rg', '--files', '--glob', '!.git', '--hidden' },
+        find_command = { 'rg', '--files', '--glob', '!.git', '--glob', '!.ccls-cache', '--hidden' },
     });
 end, {})
 vim.keymap.set('n', '<C-p>', function()
