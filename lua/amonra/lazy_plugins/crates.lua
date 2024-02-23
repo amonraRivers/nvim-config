@@ -1,4 +1,5 @@
-local null_ls = require('null-ls')
+local config= function()
+
 local crates = require('crates')
 
 local opts = { silent = true }
@@ -21,13 +22,13 @@ vim.keymap.set('n', '<leader>cH', crates.open_homepage, opts)
 vim.keymap.set('n', '<leader>cR', crates.open_repository, opts)
 vim.keymap.set('n', '<leader>cD', crates.open_documentation, opts)
 vim.keymap.set('n', '<leader>cC', crates.open_crates_io, opts)
+end
 
-crates.setup {
-	null_ls = {
-		enabled = true,
-		name = "crates.nvim",
-	},
-	popup = {
-		autofocus = true,
-	}
+return { 
+    {
+        'saecki/crates.nvim',
+        tag = 'v0.4.0',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = config,
+    }
 }
