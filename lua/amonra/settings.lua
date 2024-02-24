@@ -16,3 +16,4 @@ vim.opt.shiftwidth = 4;
 vim.opt.ignorecase = true;
 -- set smart case
 vim.opt.smartcase = true;
+vim.g.netrw_liststyle = 3;
