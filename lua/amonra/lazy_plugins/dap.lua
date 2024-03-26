@@ -107,13 +107,13 @@ return {
             "Run Last"
         },
         {
-            "<leader>do",
+            "<leader>dO",
             function() require("dap").step_out() end,
             desc =
             "Step Out"
         },
         {
-            "<leader>dO",
+            "<leader>do",
             function() require("dap").step_over() end,
             desc =
             "Step Over"

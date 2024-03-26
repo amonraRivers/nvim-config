@@ -4,7 +4,6 @@ return { {
     { "folke/neoconf.nvim",       cmd = "Neoconf" },
     { "folke/neodev.nvim" },
     { "github/copilot.vim" },
-    { 'mbbill/undotree' },
 
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-nvim-lsp' },

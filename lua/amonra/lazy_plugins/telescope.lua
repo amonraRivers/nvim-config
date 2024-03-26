@@ -10,7 +10,7 @@ return {
                 find_command = { 'rg', '--files', '--glob', '!.git', '--glob', '.env*', '--hidden' },
             });
         end, {})
-        vim.keymap.set('n', '<leader>pA', function()
+        vim.keymap.set('n', '<leader>pa', function()
             builtin.find_files({
                 find_command = { 'rg', '--files', '--glob', '!.git', '--no-ignore', '--hidden' },
             });

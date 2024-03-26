@@ -21,10 +21,10 @@ return {
         vim.keymap.set("n", "<leader>tp", function() trouble.previous({ skip_groups = true, jump = true }) end)
 
         -- jump to the first item, skipping the groups
-        vim.keymap.set("n", "<leader>tp", function() trouble.first({ skip_groups = true, jump = true }) end)
+        --vim.keymap.set("n", "<leader>tp", function() trouble.first({ skip_groups = true, jump = true }) end)
 
         -- jump to the last item, skipping the groups
-        vim.keymap.set("n", "<leader>tp", function() trouble.last({ skip_groups = true, jump = true }) end)
+        --vim.keymap.set("n", "<leader>tp", function() trouble.last({ skip_groups = true, jump = true }) end)
     end
 
 }

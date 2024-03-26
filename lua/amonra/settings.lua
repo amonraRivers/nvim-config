@@ -9,9 +9,10 @@ vim.opt.spr = true;
 -- expand tab to spaces
 vim.opt.expandtab = true;
 -- use smart tab
-vim.opt.smarttab = true;
+vim.opt.smarttab = false;
 -- set tab width
 vim.opt.shiftwidth = 4;
+vim.opt.softtabstop = 4;
 -- set ignore case
 vim.opt.ignorecase = true;
 -- set smart case
