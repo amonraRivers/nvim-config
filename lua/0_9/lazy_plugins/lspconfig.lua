@@ -52,12 +52,11 @@ local config = function()
         my_attach.on_attach(client)
     end
 
-    nvim_lsp.tsserver.setup {
-        on_attach = disableFormatting, --my_attach.on_attach,
+    nvim_lsp.ts_ls.setup {
+        on_attach = my_attach, --my_attach.on_attach,
         filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
             "typescript.tsx" },
         cmd = { "typescript-language-server", "--stdio" },
-        capabilites = capabilities,
     }
 
     nvim_lsp.lua_ls.setup {
@@ -79,6 +78,11 @@ local config = function()
             },
         },
         capabilities = capabilities,
+    }
+
+    nvim_lsp.julials.setup {
+        on_attach = my_attach.on_attach,
+        capabilities = capabilities
     }
 
     nvim_lsp.phpactor.setup {
@@ -166,6 +170,15 @@ local config = function()
         },
         filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
             "typescript.tsx", "markdown" },
+    }
+
+    nvim_lsp.jsonls.setup {
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        init_options = {
+            provideFormatter = true,
+        },
+        root_markers = { ".git/" },
     }
 end
 

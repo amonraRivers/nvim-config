@@ -28,6 +28,8 @@ return {
                     dapui.close({})
                 end
             end,
+            dependencies = {
+                "nvim-neotest/nvim-nio" },
         },
 
         -- virtual text for the debugger
@@ -174,7 +176,10 @@ return {
                 end,
                 --program = '${fileDirname}/${fileBasenameNoExtension}',
                 cwd = '${workspaceFolder}',
-                terminal = 'integrated'
+                terminal = 'integrated',
+                args = function()
+                    return "<" .. vim.fn.input('Arguments: ', '', 'file')
+                end,
             }
         }
 
