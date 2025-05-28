@@ -16,4 +16,5 @@ vim.g.copilot_filetypes = {
     php = true,
     js = true,
     objcpp = true,
+    swift = true,
 }
