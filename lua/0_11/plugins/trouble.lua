@@ -41,6 +41,18 @@ return {
             "<cmd>Trouble qflist toggle<cr>",
             desc = "Quickfix List (Trouble)",
         },
+        { "<leader>tn",
+            "<cmd>Trouble next jump=true<cr>",
+            desc = "Next issue",
+        },
+        { "<leader>tp",
+            "<cmd>Trouble prev jump=true<cr>",
+            desc = "Previous issue",
+        },
+        { "<leader>tj",
+            "<cmd>Trouble  jump<cr>",
+            desc = "Jump",
+        },
     },
     config = function()
         local wk = require("which-key")

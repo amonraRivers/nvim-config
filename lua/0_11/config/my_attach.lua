@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         opts.desc = "LSP: Go to implementation"
         vim.keymap.set('n', '<leader>lgi', vim.lsp.buf.implementation, opts)
         opts.desc = "LSP: signature help"
-        vim.keymap.set({ 'n', 'i' }, '<leader>ls', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set({ 'n', 'v' }, '<leader>ls', vim.lsp.buf.signature_help, opts)
         opts.desc = "LSP: Add workspace folder"
         vim.keymap.set('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, opts)
         opts.desc = "LSP: Remove workspace folder"
