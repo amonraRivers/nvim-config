@@ -1,7 +1,7 @@
 local function has_eslint_config_in_package_json(fname)
     local package_json = vim.fs.find("package.json", { upward = true, path = fname })[1]
     if not package_json then return false end
-r   local content = vim.fn.readfile(package_json)
+    local content = vim.fn.readfile(package_json)
     local ok, parsed = pcall(vim.json.decode, table.concat(content, "\n"))
     return ok and parsed["eslintConfig"] ~= nil
 end
