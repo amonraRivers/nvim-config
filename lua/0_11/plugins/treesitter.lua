@@ -7,7 +7,7 @@ return {
         configs.setup({
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "typescript",
                 "html", "tsx", "go", "rust", "php", "python", "markdown", "json", "yaml", "toml",
-                "css", "java", "ebnf", "julia" },
+                "css", "java", "ebnf", "julia", "zig" },
             sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },

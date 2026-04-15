@@ -1,6 +1,4 @@
-return { {
-
-    "folke/which-key.nvim", },
+return { 
     { "folke/neoconf.nvim",       cmd = "Neoconf" },
     { "github/copilot.vim" },
 

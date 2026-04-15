@@ -1,39 +1,7 @@
---[[
-    --return {
+return {
     "mfussenegger/nvim-dap",
 
     dependencies = {
-
-        -- fancy UI for the debugger
-        {
-            "rcarriga/nvim-dap-ui",
-            -- stylua: ignore
-            keys = {
-                { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
-                { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
-            },
-            opts = {},
-            config = function(_, opts)
-                -- setup dap config by VsCode launch.json file
-                -- require("dap.ext.vscode").load_launchjs()
-                local dap = require("dap")
-                local dapui = require("dapui")
-                dapui.setup(opts)
-                dap.listeners.after.event_initialized["dapui_config"] = function()
-                    dapui.open({})
-                end
-                dap.listeners.before.event_terminated["dapui_config"] = function()
-                    dapui.close({})
-                end
-                dap.listeners.before.event_exited["dapui_config"] = function()
-                    dapui.close({})
-                end
-            end,
-            dependencies = {
-                "nvim-neotest/nvim-nio" },
-        },
-
-        -- virtual text for the debugger
         {
             "theHamsta/nvim-dap-virtual-text",
             opts = {},
@@ -42,12 +10,6 @@
         -- which key integration
         {
             "folke/which-key.nvim",
-            optional = true,
-            opts = {
-                defaults = {
-                    ["<leader>d"] = { name = "+debug" },
-                },
-            },
         },
 
     },
@@ -154,70 +116,10 @@
     },
 
     config = function()
-        local port = 13000
         local dap = require("dap")
         dap.adapters.codelldb = {
-            type = 'server',
-            port = "${port}",
-            executable = {
-                -- CHANGE THIS to your path!
-                command = vim.env.HOME .. '/.codelldb/extension/adapter/codelldb',
-                args = { "--port", "${port}" },
-
-                -- On windows you may have to uncomment this:
-                -- detached = false,
-            }
-        }
-        dap.configurations.c = {
-            {
-                type = 'codelldb',
-                request = 'launch',
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                --program = '${fileDirname}/${fileBasenameNoExtension}',
-                cwd = '${workspaceFolder}',
-                terminal = 'integrated',
-                args = function()
-                    return "<" .. vim.fn.input('Arguments: ', '', 'file')
-                end,
-            }
-        }
-
-        dap.configurations.cpp = dap.configurations.c
-
-        dap.configurations.rust = {
-            {
-                type = 'codelldb',
-                request = 'launch',
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                terminal = 'integrated',
-                sourceLanguages = { 'rust' }
-            }
-        }
-    end,
-}
---]]
-return {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-        local port = 13000
-        local dap = require("dap")
-        dap.adapters.codelldb = {
-            type = 'server',
-            port = "${port}",
-            executable = {
-                -- CHANGE THIS to your path!
-                command = vim.env.HOME .. '/.codelldb/extension/adapter/codelldb',
-                args = { "--port", "${port}" },
-
-                -- On windows you may have to uncomment this:
-                -- detached = false,
-            }
+            type = 'executable',
+            command = "codelldb",
         }
         dap.configurations.c = {
             {
@@ -229,12 +131,15 @@ return {
                 end,
                 cwd = '${workspaceFolder}',
                 stopOnEntry = false,
+                args = function()
+                    local args_string = vim.fn.input("Arguments: ")
+                    return vim.split(args_string, " ")
+                end,
             },
         }
 
         dap.configurations.cpp = dap.configurations.c
         dap.configurations.rust = dap.configurations.c
-        -- register the keymaps here
-        --
-    end
+        dap.configurations.zig = dap.configurations.c
+    end,
 }
