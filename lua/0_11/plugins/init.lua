@@ -1,6 +1,5 @@
 return { 
     { "folke/neoconf.nvim",       cmd = "Neoconf" },
-    { "github/copilot.vim" },
 
     -- Debugging,
     { 'nvim-lua/plenary.nvim' },

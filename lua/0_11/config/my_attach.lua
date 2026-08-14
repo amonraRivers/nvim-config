@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('my.lsp', {}),
     callback = function(args)
         local wk = require("which-key")
-        wk.add({"<leader>l",group="lsp actions"})
+        wk.add({ "<leader>l", group = "lsp actions" })
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         if client.server_capabilities.documentFormattingProvider then
             -- using the recommended vim.keymap.set
@@ -59,10 +59,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         )
         opts.desc = "LSP:get next"
         vim.keymap.set('n', '<leader>l]d', function()
-         vim.diagnostic.jump({ count = 1 })
+            vim.diagnostic.jump({ count = 1 })
         end
         )
         opts.desc = "LSP: set loc list"
         vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client:supports_method('textDocument/inlayHint') then
+            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+        end
     end,
 })
