@@ -1,6 +1,6 @@
 vim.lsp.enable('pylsp')
 vim.lsp.config('pylsp', {
-    cmd = { vim.fn.expand('~/.pyenv/versions/neovim-tools/bin/pylsp') },
+    cmd = { vim.fn.expand('~/.virtual_py_envs/nvim/bin/pylsp') },
     filetypes = { 'python' },
 
     settings = {

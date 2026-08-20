@@ -3,7 +3,7 @@ return {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     -- FIX: Bypasses raw terminal yarn commands and fetches the pre-built release binary safely
-    build = "cd app && npm install",
+    build = "cd app && npm install && git restore .",
     config = function()
         -- 1. Register the keymap inside which-key
         local wk = require("which-key")

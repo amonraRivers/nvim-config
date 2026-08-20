@@ -2,8 +2,6 @@ return {
     { "folke/neoconf.nvim",       cmd = "Neoconf" },
 
     -- Debugging,
-    { 'nvim-lua/plenary.nvim' },
-    { 'alx741/vim-rustfmt' },
     {
         'windwp/nvim-ts-autotag',
     },
